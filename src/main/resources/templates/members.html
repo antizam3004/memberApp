@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head >
+    <meta charset="UTF-8">
+    <title>Members app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h1>Members</h1>
+<a th:href="@{/addMemberForm}" class="btn btn-primary btn-sm mb-3">Add member</a>
+<div align="center">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <td>First name</td>
+                <td>Last name</td>
+                <td>Adress</td>
+                <td>City</td>
+                <td>Telephone</td>
+                <td>Birth Date</td>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member: ${membersList}">
+            <td th:text="${member.firstName}"></td>
+            <td th:text="${member.lastName}"></td>
+            <td th:text="${member.address}"></td>
+            <td th:text="${member.city}"></td>
+            <td th:text="${member.telephone}"></td>
+            <td th:text="${member.birthDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
