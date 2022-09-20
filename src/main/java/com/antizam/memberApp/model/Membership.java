@@ -1,23 +1,37 @@
 package com.antizam.memberApp.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.hibernate.engine.internal.Cascade;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
 public class Membership {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
     private BigDecimal amount;
+
+    @Size(min = 2, max = 50, message = "Description size must be between 2 and 50")
     private String description;
-    @Column(name="date_paid")
+
+    @Column(name = "date_paid")
+    @NotNull
     private LocalDate datePaid;
-    @Column(name="is_paid")
+
+    @Column(name = "is_paid")
+    @NotNull
     private boolean isPaid;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Member member;
 
 
     public int getId() {
@@ -58,5 +72,13 @@ public class Membership {
 
     public void setPaid(boolean paid) {
         isPaid = paid;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

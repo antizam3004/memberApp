@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Memberships</title>
+</head>
+<body>
+<h1>Memberships</h1>
+
+<div align="center">
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <td>Amount</td>
+            <td>Description</td>
+            <td>Date paid</td>
+            <td>Is paid</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="membership: ${membershipList}">
+            <td th:text="${membership.amount}"></td>
+            <td th:text="${membership.description}"></td>
+            <td th:date="${membership.datePaid}"></td>
+            <td th:text="${membership.isPaid}"></td>
+            <td> <a th:href="@{/membershipForm}" class="btn btn-primary btn-sm mb-3">Memberships</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

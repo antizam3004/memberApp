@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head >
+<head>
     <meta charset="UTF-8">
     <title>Members app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +16,11 @@
             <tr>
                 <td>First name</td>
                 <td>Last name</td>
-                <td>Adress</td>
+                <td>Address</td>
                 <td>City</td>
                 <td>Telephone</td>
                 <td>Birth Date</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
             <td th:text="${member.city}"></td>
             <td th:text="${member.telephone}"></td>
             <td th:text="${member.birthDate}"></td>
+            <td> <a th:href="@{/membershipForm}" class="btn btn-primary btn-sm mb-3">Memberships</a></td>
         </tr>
         </tbody>
     </table>

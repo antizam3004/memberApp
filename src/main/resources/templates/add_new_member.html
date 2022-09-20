@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head >
+<head>
     <meta charset="UTF-8">
     <title>Adding Members</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div>
-<h3>Adding new member</h3>
+<div align=center>
+    <h3>Adding new member</h3>
 
     <form action="#" th:action="@{/addMember}" th:object="${member}" method="POST">
-
+        <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td>
         <input type="text" th:field="*{firstName}" placeholder="First name" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</td>
         <input type="text" th:field="*{lastName}" placeholder="Last name" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
         <input type="text" th:field="*{address}" placeholder="Address" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Name Error</td>
         <input type="text" th:field="*{city}" placeholder="City" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}">Telephone Error</td>
         <input type="text" th:field="*{telephone}" placeholder="Telephone" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Date of birth Error</td>
         <input type="date" th:field="*{birthDate}" placeholder="Birth date" class="form-control mb-4 col-4"/>
+
         <button type="submit" class="btn btn-info col-2">Add member</button>
 
     </form>

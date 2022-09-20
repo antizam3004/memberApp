@@ -5,7 +5,10 @@ import com.antizam.memberApp.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -32,7 +35,10 @@ public class MemberController {
     }
 
     @PostMapping("/addMember")
-    public String addMember(@ModelAttribute Member member){
+    public String addMember(@ModelAttribute @Valid Member member, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "add_new_member";
+        }
         memberService.addMember(member);
         return "redirect:/members";
     }
