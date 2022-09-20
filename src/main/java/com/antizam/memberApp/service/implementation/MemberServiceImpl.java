@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);}
 
     @Override
-    public Optional<Member> findMember(int id) {
+    public Optional<Member> findMemberById(int id) {
         return memberRepository.findById(id);
     }
 

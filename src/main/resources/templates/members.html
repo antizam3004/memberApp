@@ -31,7 +31,7 @@
             <td th:text="${member.city}"></td>
             <td th:text="${member.telephone}"></td>
             <td th:text="${member.birthDate}"></td>
-            <td> <a th:href="@{/membershipForm}" class="btn btn-primary btn-sm mb-3">Memberships</a></td>
+            <td> <a th:href="@{/membershipForm/}+${member.id}" class="btn btn-primary btn-sm mb-3">Memberships</a></td>
         </tr>
         </tbody>
     </table>

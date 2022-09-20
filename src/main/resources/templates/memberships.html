@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Memberships</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
 <h1>Memberships</h1>
-
+<a th:href="@{/addNewMembershipForm/}+${member_id}" class="btn btn-primary btn-sm mb-3">Add new membership </a>
 <div align="center">
     <table class="table table-striped">
         <thead class="table-dark">
@@ -16,15 +19,17 @@
             <td>Date paid</td>
             <td>Is paid</td>
             <td></td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="membership: ${membershipList}">
             <td th:text="${membership.amount}"></td>
             <td th:text="${membership.description}"></td>
-            <td th:date="${membership.datePaid}"></td>
+            <td th:text="${membership.datePaid}"></td>
             <td th:text="${membership.isPaid}"></td>
-            <td> <a th:href="@{/membershipForm}" class="btn btn-primary btn-sm mb-3">Memberships</a></td>
+            <td> <a th:href="@{/changeMembershipForm/}+${membership.id}" class="btn btn-primary btn-sm mb-3">Change</a></td>
+            <td> <a th:href="@{/deleteMembership/}+${membership.id}" class="btn btn-primary btn-sm mb-3">Delete</a></td>
         </tr>
         </tbody>
     </table>

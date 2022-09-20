@@ -12,5 +12,7 @@ public interface MembershipService {
     void addMembership(Membership membership);
     void deleteMembership(int membershipId);
     void updateMembership(Membership membership);
+    Optional<Membership> findMembershipById(int id);
+
 
 }

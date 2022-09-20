@@ -1,10 +1,8 @@
 package com.antizam.memberApp.model;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.hibernate.engine.internal.Cascade;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -16,7 +14,8 @@ public class Membership {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+    @Min(value = 0, message = "The value must be positive")
+    @NotNull(message = "Amount can not be null")
     private BigDecimal amount;
 
     @Size(min = 2, max = 50, message = "Description size must be between 2 and 50")
@@ -24,13 +23,14 @@ public class Membership {
 
     @Column(name = "date_paid")
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate datePaid;
 
     @Column(name = "is_paid")
     @NotNull
-    private boolean isPaid;
+    private boolean paid;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private Member member;
 
 
@@ -67,11 +67,11 @@ public class Membership {
     }
 
     public boolean isPaid() {
-        return isPaid;
+        return paid;
     }
 
     public void setPaid(boolean paid) {
-        isPaid = paid;
+        this.paid = paid;
     }
 
     public Member getMember() {

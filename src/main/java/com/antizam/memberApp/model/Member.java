@@ -34,7 +34,7 @@ public class Member {
 
     @Column(name = "birth_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotNull(message = "Date of birth cannot be null")
+    @NotNull(message = "Date of birth can not be null")
     private LocalDate birthDate;
 
     public int getId() {

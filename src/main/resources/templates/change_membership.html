@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Changing Membership</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div align=center>
+    <h3>Change membership</h3>
+
+    <form action="#" th:object="${membership}" th:action="@{/updateMembership}"  method="POST">
+        <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Amount Error</td>
+        <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+        <input type="text" th:field="*{description}" placeholder="Description" class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('datePaid')}" th:errors="*{datePaid}">Date format Error</td>
+        <input type="date" th:field="*{datePaid}"  class="form-control mb-4 col-4"/>
+        <td th:if="${#fields.hasErrors('paid')}" th:errors="*{paid}">Is paid Error</td>
+        <input type="text" th:field="*{paid}"  class="form-control mb-4 col-4"/>
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -9,5 +9,5 @@ public interface MemberService {
 
     List<Member> getAllMembers();
     void addMember(Member member);
-    Optional<Member> findMember(int id);
+    Optional<Member> findMemberById(int id);
 }
