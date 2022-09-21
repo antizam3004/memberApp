@@ -19,11 +19,13 @@
         <input type="text" th:field="*{description}" placeholder="Description" class="form-control mb-4 col-4"/>
         <td th:if="${#fields.hasErrors('datePaid')}" th:errors="*{datePaid}">Date format Error</td>
         <input type="date" th:field="*{datePaid}"  class="form-control mb-4 col-4"/>
-        <td th:if="${#fields.hasErrors('paid')}" th:errors="*{paid}">Is paid Error</td>
-        <input type="text" th:field="*{paid}"  class="form-control mb-4 col-4"/>
-        <input type="hidden" th:value="*{member.id}" name="member"/>
+        <label for="paid">Paid </label>
+        <input type="hidden" name="paid" value="on">
+        <input type="checkbox" name="paid" id="paid" value="true" data-toggle="toggle" th:checked="*{paid}"/>
 
-        <button type="submit" class="btn btn-info col-2">Add membership</button>
+
+        <input type="hidden" th:value="*{member.id}" name="member"/>
+        <div><button type="submit" class="btn btn-info col-2">Add membership</button></div>
 
     </form>
 </div>

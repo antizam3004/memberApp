@@ -28,8 +28,8 @@
             <td th:text="${membership.description}"></td>
             <td th:text="${membership.datePaid}"></td>
             <td th:text="${membership.isPaid}"></td>
-            <td> <a th:href="@{/changeMembershipForm/}+${membership.id}" class="btn btn-primary btn-sm mb-3">Change</a></td>
-            <td> <a th:href="@{/deleteMembership/}+${membership.id}" class="btn btn-primary btn-sm mb-3">Delete</a></td>
+            <td> <a th:href="@{/changeMembershipForm/}+${membership.id}" class="btn btn-warning">Change</a></td>
+            <td> <a th:href="@{/deleteMembership/}+${membership.id}" class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
     </table>

@@ -65,6 +65,7 @@ public class MembershipController {
     }
     @PostMapping("/updateMembership")
     public String updateUser(@Valid Membership membership, BindingResult result) {
+        System.out.println(membership.getAmount());
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors().toString());
             return "change_membership";
