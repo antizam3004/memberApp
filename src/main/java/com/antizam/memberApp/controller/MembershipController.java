@@ -60,12 +60,12 @@ public class MembershipController {
     }
     @GetMapping("/changeMembershipForm/{id}")
     public String changeMembershipForm(Model model, @PathVariable("id") int id){
-        model.addAttribute("membership", membershipService.findMembershipById(id));
+        membershipService.findMembershipById(id).ifPresent(m->model.addAttribute("membership",m));
         return "change_membership";
     }
     @PostMapping("/updateMembership")
     public String updateUser(@Valid Membership membership, BindingResult result) {
-        System.out.println(membership.getAmount());
+        System.out.println(membership.toString());
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors().toString());
             return "change_membership";

@@ -12,7 +12,7 @@
 <div align=center>
     <h3>Change membership</h3>
 
-    <form action="#" th:object="${membership}" th:action="@{/updateMembership}"  method="POST">
+    <form action="#" th:action="@{/updateMembership}" th:object="${membership}" method="POST">
         <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Amount Error</td>
         <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4"/>
         <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
@@ -21,9 +21,10 @@
         <input type="date" th:field="*{datePaid}"  class="form-control mb-4 col-4"/>
         <label for="paid">Paid </label>
         <input type="hidden" name="paid" value="on">
-        <input type="checkbox" name="paid" id="paid" value="true" data-toggle="toggle"/>
+        <input type="checkbox" name="paid" id="paid" value="true" data-toggle="toggle" th:checked="*{paid}" />
 
-
+        <input type="hidden" th:value="*{member.id}" name="member"/>
+        <input type="hidden" th:value="*{id}" name="id"/>
         <div><button type="submit" class="btn btn-info col-2">Save</button></div>
 
     </form>
